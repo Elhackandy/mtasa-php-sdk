@@ -39,7 +39,7 @@ class mta
 				return $resource;
 		}
 		
-		$res = new Resource ( $resourceName, $this );
+		$res = new ResourceClass ( $resourceName, $this );
 		$this->resources[] = $res;
 		return $res;
 	}
@@ -95,7 +95,7 @@ class mta
 		{	
 			if ( substr( $item, 0, 3 ) == "^E^" )
 			{
-				$item = new Element( substr( $item, 3 ) );
+				$item = new ElementClass( substr( $item, 3 ) );
 			}
 			elseif ( substr( $item, 0, 3 ) == "^R^" )
 			{
@@ -117,7 +117,7 @@ class mta
 		}
 		elseif ( is_object($item) )
 		{	
-			if ( get_class($item) == "Element" || get_class($item) == "Resource" )
+			if ( get_class($item) == "ElementClass" || get_class($item) == "ResourceClass" )
 			{
 				$item = $item->toString();
 			}
@@ -207,7 +207,7 @@ class mta
 	}
 }
 
-class Element
+class ElementClass
 {
 	var $id;
 
@@ -223,7 +223,7 @@ class Element
 }
 
 
-class Resource
+class ResourceClass
 {
 	var $name;
 	private $server;
